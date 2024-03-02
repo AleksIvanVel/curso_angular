@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TareasComponent } from './tareas/tareas.component';
+import { TareasComponent } from './tareas-pendientes/tareas-pendientes.component';
 import { ListaTareasComponent } from './lista-tareas/lista-tareas.component';
 
 @Component({

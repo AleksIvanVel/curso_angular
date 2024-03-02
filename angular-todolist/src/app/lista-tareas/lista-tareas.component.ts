@@ -1,17 +1,26 @@
 import { Component } from '@angular/core';
-import { TareasComponent } from '../tareas/tareas.component';
+import { TareasComponent } from '../tareas-pendientes/tareas-pendientes.component';
 import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { TareaItemList } from '../models/tarea-item-list.model';
 
 @Component({
   selector: 'app-lista-tareas',
   standalone: true,
-  imports: [TareasComponent, NgFor],
+  imports: [TareasComponent, NgFor, FormsModule],
   templateUrl: './lista-tareas.component.html',
   styleUrl: './lista-tareas.component.css'
 })
 export class ListaTareasComponent {
-  tareas: string[];
+  tareaItems: TareaItemList[];
+  tareaInput: string = '';
   constructor(){
-    this.tareas = ['Tarea 1','Tarea 2','Tarea 3'];
+    this.tareaItems = [];
+  }
+
+  guardarValor(tarea:string):boolean{
+    this.tareaItems.push(new TareaItemList(tarea));
+    console.log(this.tareaItems);
+    return false;
   }
 }
