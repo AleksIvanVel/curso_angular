@@ -1,7 +1,15 @@
 export class TareaItemList{
-    tarea:string;
+    private selected:boolean = false;
 
-    constructor( t:string){
-        this.tarea = t;
+    constructor( public tarea: string){
+        
+    }
+    
+    isSelected():boolean{
+        return this.selected;
+    }
+
+    setSelected(s: boolean){
+        this.selected = s;
     }
 }

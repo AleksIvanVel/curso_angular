@@ -23,4 +23,9 @@ export class ListaTareasComponent {
     console.log(this.tareaItems);
     return false;
   }
+
+  priorizado(t: TareaItemList){
+    this.tareaItems.forEach(function(x) {x.setSelected(false); });
+    t.setSelected(true);
+  }
 }

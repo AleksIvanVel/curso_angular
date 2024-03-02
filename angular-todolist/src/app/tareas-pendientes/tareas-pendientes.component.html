@@ -2,8 +2,9 @@
     <div class="card-content">
         <span><h5>{{tareas.tarea}}</h5></span>
         <div class="card-desc">
-            <button type="button" class="btn btn-success float-end">completada</button>
-            <button type="button" class="btn btn-danger float-end">eliminar</button>
+            <button type="button" class="btn btn-success float-end">Completada</button>
+            <button type="button" class="btn btn-warning float-end" (click)="priorizar()">Marcar como prioritaria</button>
+            <span class="badge rounded-pill bg-info text-dark" [style.display]="tareas.isSelected() ? '' : 'none'">PIRORITARIA</span>
         </div>
     </div>
 </div>

@@ -24,12 +24,16 @@
     <h3>Tareas pendientes</h3>
     <br>
     <div class="row">
-        <app-tareas *ngFor="let d of tareaItems" [tareas]="d"></app-tareas>
+        <app-tareas-pendientes 
+        *ngFor="let t of tareaItems" 
+        [tareas]="t"
+        (clicked)="priorizado($event)"
+        ></app-tareas-pendientes>
     </div>
 
     <!-- TAREAS COMPLETADAS -->
     <hr class="mb-5">
-    <h3>Tareas completaddas</h3>
+    <h3>Tareas completadas</h3>
     <br>
     <div class="row">
        
