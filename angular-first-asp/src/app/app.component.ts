@@ -12,5 +12,5 @@ import { SaludadorComponent } from './saludador/saludador.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'angular-hola-mundo';
+  title = 'angular-first-asp';
 }

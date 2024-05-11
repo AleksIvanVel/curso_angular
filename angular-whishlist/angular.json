@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-hola-mundo": {
+    "angular-whishlist": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-hola-mundo",
+            "outputPath": "dist/angular-whishlist",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -25,15 +25,17 @@
               "src/assets"
             ],
             "styles": [
-              "~bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
-              {
-                "input": "~bootstrap/dist/css/bootstrap.min.css",
-                "bundleName": "bootstrap",
-                "inject": false
-              }
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            
+            
+            "scripts": [],
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -63,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-hola-mundo:build:production"
+              "buildTarget": "angular-whishlist:build:production"
             },
             "development": {
-              "buildTarget": "angular-hola-mundo:build:development"
+              "buildTarget": "angular-whishlist:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "angular-hola-mundo:build"
+            "buildTarget": "angular-whishlist:build"
           }
         },
         "test": {
@@ -90,14 +92,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "~bootstrap/dist/css/bootstrap.min.css",
-              {
-                "input": "~bootstrap/dist/css/bootstrap.min.css",
-                "bundleName": "bootstrap",
-                "inject": false
-              }
-            ],
+              "src/styles.css"
+            ],            
             "scripts": []
           }
         }
