@@ -25,7 +25,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "~bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              {
+                "input": "~bootstrap/dist/css/bootstrap.min.css",
+                "bundleName": "bootstrap",
+                "inject": false
+              }
             ],
             "scripts": []
           },
@@ -84,12 +90,21 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "~bootstrap/dist/css/bootstrap.min.css",
+              {
+                "input": "~bootstrap/dist/css/bootstrap.min.css",
+                "bundleName": "bootstrap",
+                "inject": false
+              }
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
