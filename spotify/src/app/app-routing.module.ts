@@ -1,16 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from '@modules/home/pages/home-page/home-page.component';
 
 const routes: Routes = [
+  // LAzy Loading: carga el compoennte cundo se accede a la ruta indicada
   {
-    path: 'auth', 
-    loadChildren:() => import(`./modules/auth/auth.module`).then(m => m.AuthModule)
-  },
-  {
-    path: '', //localHosto:3000/
-    component: HomePageComponent,
-    loadChildren:() => import(`./modules/home/home.module`).then(m => m.HomeModule)
+    path: '',
+    loadChildren: () => import(`./modules/home/home.module`).then(m => m.HomeModule)
   }
 ];
 

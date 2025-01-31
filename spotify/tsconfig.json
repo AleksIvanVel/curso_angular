@@ -2,35 +2,25 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "resolveJsonModule": true, //permite utilizar json
-    "baseUrl": "./",
+    "resolveJsonModule": true,  //ayuda a poder importar los archivos .json
     "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
-    "module": "es2020",
-    "paths": {
-      "@core/*": [
-        "src/app/core/*"
-      ],
-      "@modules/*": [
-        "src/app/modules/*"
-      ],
-      "@shared/*": [
-        "src/app/shared/*"
-      ]
-
-    },
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
     "lib": [
-      "es2018",
+      "ES2022",
       "dom"
     ]
   },

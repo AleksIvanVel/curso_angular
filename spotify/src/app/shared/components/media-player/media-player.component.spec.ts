@@ -8,12 +8,10 @@ describe('MediaPlayerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MediaPlayerComponent ]
+      declarations: [MediaPlayerComponent]
     })
     .compileComponents();
-  });
-
-  beforeEach(() => {
+    
     fixture = TestBed.createComponent(MediaPlayerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
