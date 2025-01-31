@@ -3,6 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "resolveJsonModule": true,  //ayuda a poder importar los archivos .json
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
@@ -18,6 +19,12 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
+    // alias de rutas
+    "paths": { 
+      "@core/*":[ "src/app/core/*"],
+      "@modules/*":[ "src/app/core/*"],
+      "@shared/*":[ "src/app/core/*"]
+    },
     "useDefineForClassFields": false,
     "lib": [
       "ES2022",
