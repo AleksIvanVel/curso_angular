@@ -5,7 +5,6 @@ import { MediaPlayerComponent } from './components/media-player/media-player.com
 import { HeaderUserComponent } from './components/header-user/header-user.component';
 
 
-
 @NgModule({
   declarations: [
     SideBarComponent,
@@ -14,6 +13,11 @@ import { HeaderUserComponent } from './components/header-user/header-user.compon
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    SideBarComponent,
+    MediaPlayerComponent,
+    HeaderUserComponent
   ]
 })
 export class SahredModule { }
