@@ -1,1 +1,8 @@
-<p>home-page works!</p>
+
+<app-side-bar></app-side-bar>
+<app-media-player></app-media-player>
+
+ <!-- router outlet (hijo) para carga dinamica del conteniodo sin destruir sidebar y media player -->
+<div class="home-wrapper">
+    <router-outlet></router-outlet>
+</div>
