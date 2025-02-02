@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class MediaPlayerComponent {
 
+  mockCover: any={
+    cover: 'image/url',
+    album: 'album name',
+    name: 'song name'
+  }
 }
