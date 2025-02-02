@@ -1,1 +1,15 @@
-<p>tracks-page works!</p>
+<div class="trakcs-page">
+    <!-- comunicacion entre componente padre (tracks page)
+    a componente hijo (section generic) -->
+
+    <!-- cards small -->
+            <!-- datos que manda al componente hijo (section generic) -->
+    <app-section-generic 
+        [title] ="'title section'"
+        [mode]="'small'" 
+        [dataTracks]="mockTrackList">
+    </app-section-generic>
+    
+    <!-- cards big -->
+    <app-section-generic [dataTracks]="mockTrackList" [mode]="'big'" [title] ="'title section 2'"></app-section-generic>
+</div>
