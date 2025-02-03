@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TrackModel } from '@core/models/tracks.models';
 
 @Component({
   selector: 'app-section-generic',
@@ -10,5 +11,5 @@ export class SectionGenericComponent {
   // valores que recibe del componente padre (tracks page)
   @Input() title: string = '';
   @Input() mode: 'small' | 'big' = 'big';
-  @Input() dataTracks: Array<any> = [];
+  @Input() dataTracks: Array<TrackModel> = [];
 }
