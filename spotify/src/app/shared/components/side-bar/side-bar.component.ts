@@ -14,13 +14,13 @@ export class SideBarComponent implements OnInit {
 
   customOptions: Array<any> = []
 
-  constructor(private router: Router) { }
+  constructor() { }
   ngOnInit(): void {
     this.mainMenu.defaultOptions = [
       {
         name: 'Home',
         icon: 'uil uil-estate',
-        router: ['/', 'auth']
+        router: ['/', 'tracks']
       },
       {
         name: 'Buscar',
@@ -67,16 +67,17 @@ export class SideBarComponent implements OnInit {
 
   }
 
-  goTo($event: any): void {
-    this.router.navigate(['/', 'favorites'], {
-      queryParams: {
-        key1: 'value1',
-        key2: 'value2',
-        key3: 'value3'
-      }
-    })
-    console.log($event)
-  }
+  // Pasar QueryParams en una funcion
+  // goTo($event: any): void {
+  //   this.router.navigate(['/', 'favorites'], {
+  //     queryParams: {
+  //       key1: 'value1',
+  //       key2: 'value2',
+  //       key3: 'value3'
+  //     }
+  //   })
+  //   console.log($event)
+  // }
 }
 
 
