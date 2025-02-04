@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TracksRoutingModule } from './tracks-routing.module';
 import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
-import { SahredModule } from 'src/app/shared/sahred.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import { SahredModule } from 'src/app/shared/sahred.module';
   imports: [
     CommonModule,
     TracksRoutingModule,
-    SahredModule
+    SharedModule
   ]
 })
 export class TracksModule { }
