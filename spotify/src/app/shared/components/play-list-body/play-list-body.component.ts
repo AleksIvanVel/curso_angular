@@ -9,6 +9,8 @@ import * as dataRaw from '../../../data/tracks.json'
 })
 export class PlayListBodyComponent implements OnInit {
   @Input() tracks: TrackModel[] = [];
+
+  //inicializacion del filtro
   optionSort:{property: string|null, order: string} = {property: null, order: 'asc'}
   
   constructor(){}
@@ -18,6 +20,7 @@ export class PlayListBodyComponent implements OnInit {
     this.tracks = data
   }
 
+  //funcion para ordenar el array por la propiedad que se le pasa 
   changeSort(property: string): void{
     const{order} = this.optionSort
 
@@ -25,8 +28,6 @@ export class PlayListBodyComponent implements OnInit {
       property,
       order: order === 'asc' ? 'desc': 'asc'
     }
-     
-    console.log(this.optionSort);
   }
 
 }
