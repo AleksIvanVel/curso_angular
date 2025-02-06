@@ -17,6 +17,11 @@ export class TracksService {
     .pipe(
       map((dataRaw:any) =>{
         return dataRaw.data       //aplica un filtro para extraer solo la propiedad data
+      }),
+
+      catchError((err) =>{
+        console.error('Ha ocurido un error al consultar el servidor')
+        return of([])
       })
     )
   }
