@@ -19,9 +19,15 @@
             <div class="form-steps">
                 <a class="link" href="">¿Se te ha olvidado la contraseña?</a>
             </div>
-            <div>
-                Ocurrio un error con tu email o password
-            </div>
+
+            <!-- uso de directiva @if -->
+            @if(errorSession){
+               <div class="errorAuth">
+                    <p>Credenciales no validas</p>
+               </div> 
+            }
+
+
             <div class="form-action">
                 <button [disabled]="formLogin.invalid"  class="login social-btn">Iniciar sesión</button>
             </div>
