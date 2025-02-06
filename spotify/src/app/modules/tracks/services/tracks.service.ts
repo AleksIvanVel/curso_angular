@@ -1,20 +1,40 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TrackModel } from '@core/models/tracks.models';
-import { Observable, of } from 'rxjs';
-import * as dataRaw from '../../../data/tracks.json';
+import { catchError, map, Observable, of } from 'rxjs';
+import { enviroment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class TracksService {
-  //forma 1 de declarar observables
-  dataTracksTrending$: Observable<TrackModel[]> = of([]) //como buena practica se utiliza $
-  dataTracksRandom$: Observable<TrackModel[]> = of()
+  private readonly URL = enviroment.api;
 
-  constructor() { 
-    const {data}:any = (dataRaw as any).default;
-    
-    //los observables requieren de una subscripcion para poder verse 
-    this.dataTracksTrending$ = of(data);
-    this.dataTracksRandom$ = of(data);
+  //inyeccion del servicio para hacer las llamadas http
+  constructor(private httpClient: HttpClient) { 
+  }
+
+  getAllTracks$():Observable<any>{
+    return this.httpClient.get(`${this.URL}/tracks`)
+    .pipe(
+      map((dataRaw:any) =>{
+        return dataRaw.data       //aplica un filtro para extraer solo la propiedad data
+      })
+    )
+  }
+
+  getAllRandom$():Observable<any>{
+    return this.httpClient.get(`${this.URL}/tracks`)
+    .pipe(
+      map(({data}:any) =>{          // utilzar { } para la desestrcturacion de js
+        return data.reverse()       //podemos aplicar un filtro para extraer solo la propiedad data y hacer un reverse a la lista
+      }),
+
+      //manejo de errores
+      catchError((err) =>{
+        console.error('Ha ocurido un error al consultar el servidor')
+        
+        //retornamos una lista vacia para 
+        return of([])
+      })
+    )
   }
 }
