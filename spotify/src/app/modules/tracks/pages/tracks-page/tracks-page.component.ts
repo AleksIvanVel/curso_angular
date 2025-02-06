@@ -8,14 +8,11 @@ import { TrackModel } from '@core/models/tracks.models';
   styleUrl: './tracks-page.component.css'
 })
 export class TracksPageComponent implements OnInit {
-  mockTracksList: Array<TrackModel> = []
+  tracksTrending: Array<TrackModel> = []
+  tracksRandom: Array<TrackModel> = []
 
   constructor(){}
 
   ngOnInit():void{
-    const { data }: any = (dataRaw as any).default;
-
-    //llena el mock con los atos de la API basado en el modelo TrackModel
-    this.mockTracksList = data;
   }
 }
