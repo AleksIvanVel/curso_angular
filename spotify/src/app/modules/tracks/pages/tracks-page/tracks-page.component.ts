@@ -17,14 +17,8 @@ export class TracksPageComponent implements OnInit {
   constructor(private _tracksService: TracksService){}
 
   ngOnInit():void{
-
-
-
-    this._tracksService.getAllRandom$()
-    .subscribe((response: TrackModel[]) =>{
-      this.tracksRandom = response
-    })
-
+    this.loadDataAll();
+    this.loadDataReverse();
   }
 
   loadDataAll(): void{
@@ -33,6 +27,13 @@ export class TracksPageComponent implements OnInit {
       this.tracksTrending = response
     }, err =>{
       alert('error de conexion a la API')
+    })
+  }
+
+  loadDataReverse(): void{
+    this._tracksService.getAllRandom$()
+    .subscribe((response: TrackModel[]) =>{
+      this.tracksRandom = response
     })
   }
 }
