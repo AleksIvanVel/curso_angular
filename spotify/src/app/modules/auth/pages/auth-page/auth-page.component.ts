@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-page',
@@ -15,7 +16,8 @@ export class AuthPageComponent implements OnInit{
   constructor(private _atuhSerivce: AuthService,  //inyeccion del servicios
               
               //servicio para utilizar cookies
-              private cookie: CookieService
+              private cookie: CookieService,
+              private router: Router
             ){} 
 
   ngOnInit(): void {
@@ -44,8 +46,8 @@ export class AuthPageComponent implements OnInit{
       console.log('sesion iniciada correctamente')
 
       const {tokenSession, data} = responseOk;
-
       this.cookie.set('tokenSession', tokenSession, 4, '/');
+      this.router.navigate(['/', ''])
     },
     err =>{
       this.errorSession = true;
