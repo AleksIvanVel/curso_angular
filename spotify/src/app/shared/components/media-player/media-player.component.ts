@@ -9,26 +9,19 @@ import { Subscription } from 'rxjs';
   styleUrl: './media-player.component.css'
 })
 export class MediaPlayerComponent implements OnInit, OnDestroy {
-
-  mockCover: any={
-    cover: 'image/url',
-    album: 'album name',
-    name: 'song name'
-  }
-
+  mockCover !: TrackModel;
   listObservers$: Array<Subscription> = []
 
-  constructor(private _multimediaService: MultimediaService){}
+  constructor(public multimediaService: MultimediaService){}
 
   //primer ciclo de vida
   ngOnInit(): void {
-      //recibe el objeto enviado desde el componente de card player
-      const observer1$: Subscription = this._multimediaService.callback.subscribe((response: TrackModel) => {
-        console.log('recibiendo Cancion...', response ) 
-      }
-    )
+    this.multimediaService.trackInfo$.subscribe(res => {
+      this.mockCover = res
+    })
 
-    this.listObservers$ = [observer1$] // guarda en una lista los observadores creados
+
+
   }
 
   //ultimo ciclo de vida del componente, se ejecuta antes de destruir el componente

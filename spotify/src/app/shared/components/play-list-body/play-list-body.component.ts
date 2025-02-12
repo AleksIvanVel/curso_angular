@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.models';
+import { MultimediaService } from '../../services/multimedia.service';
 
 @Component({
   selector: 'app-play-list-body',
@@ -12,7 +13,7 @@ export class PlayListBodyComponent implements OnInit {
   //inicializacion del filtro
   optionSort:{property: string|null, order: string} = {property: null, order: 'asc'}
   
-  constructor(){}
+  constructor(public  multimediaService: MultimediaService){}
 
   ngOnInit():void{
     
