@@ -14,6 +14,7 @@ export class MultimediaService {
   public trackInfo$: BehaviorSubject<any> = new BehaviorSubject(undefined)
   public timeElapsed$: BehaviorSubject<string> = new BehaviorSubject('00:00')
   public timRemaining$: BehaviorSubject<string> = new BehaviorSubject('-00:00')
+  public playerStatus$: BehaviorSubject<string> = new BehaviorSubject('paused')
 
 
   constructor() {
@@ -27,15 +28,45 @@ export class MultimediaService {
    }
 
    private listenAllEvents(): void{
+    // evento emitido por el componente html audio: timeupdate
     this.audio.addEventListener('timeupdate', this.calculeTime, false)
+
+    // evento emitido por el componente html audio: playing
+    this.audio.addEventListener('playing', this.setPlayerStatus, false)
+
+    // evento emitido por el componente html audio: playing
+    this.audio.addEventListener('play', this.setPlayerStatus, false)
+
+    // evento emitido por el componente html audio: playing
+    this.audio.addEventListener('pause', this.setPlayerStatus, false)
+
+    
+    // evento emitido por el componente html audio: playing
+    this.audio.addEventListener('ended', this.setPlayerStatus, false)
+ 
    }
 
    private calculeTime = () =>{
-    console.log('Disparando evento');
     const {duration, currentTime} = this.audio;
-    console.table([duration, currentTime]);
     this.setTimeElapsed(currentTime);
     this.setTimeRemaining(currentTime, duration);
+   }
+
+   private setPlayerStatus = (state: any) =>{
+      switch(state.type){
+        case 'play':
+          this.playerStatus$.next('play')
+          break;
+        case 'playing':
+          this.playerStatus$.next('playing')
+          break;
+        case 'ended':
+          this.playerStatus$.next('ended')
+          break;
+        default:
+          this.playerStatus$.next('paused')
+          break;
+      }
    }
 
    private setTimeElapsed(currentTime: number) : void{
@@ -65,5 +96,9 @@ export class MultimediaService {
     this.audio.src = track.url;
     this.audio.play();
     this.listenAllEvents();
+   }
+
+   public togglePayer(): void{
+    (this.audio.paused) ? this.audio.play() : this.audio.pause()
    }
 }
