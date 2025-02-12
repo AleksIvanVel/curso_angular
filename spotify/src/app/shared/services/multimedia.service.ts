@@ -15,6 +15,7 @@ export class MultimediaService {
   public timeElapsed$: BehaviorSubject<string> = new BehaviorSubject('00:00')
   public timRemaining$: BehaviorSubject<string> = new BehaviorSubject('-00:00')
   public playerStatus$: BehaviorSubject<string> = new BehaviorSubject('paused')
+  public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0)
 
 
   constructor() {
@@ -34,14 +35,14 @@ export class MultimediaService {
     // evento emitido por el componente html audio: playing
     this.audio.addEventListener('playing', this.setPlayerStatus, false)
 
-    // evento emitido por el componente html audio: playing
+    // evento emitido por el componente html audio: play
     this.audio.addEventListener('play', this.setPlayerStatus, false)
 
-    // evento emitido por el componente html audio: playing
+    // evento emitido por el componente html audio: pause
     this.audio.addEventListener('pause', this.setPlayerStatus, false)
 
     
-    // evento emitido por el componente html audio: playing
+    // evento emitido por el componente html audio: ended
     this.audio.addEventListener('ended', this.setPlayerStatus, false)
  
    }
@@ -50,6 +51,12 @@ export class MultimediaService {
     const {duration, currentTime} = this.audio;
     this.setTimeElapsed(currentTime);
     this.setTimeRemaining(currentTime, duration);
+    this.setPercentage(currentTime, duration); 
+   }
+
+   private setPercentage(currentTime: number, duration: number): void{
+    const percentage = (currentTime * 100) / duration;
+    this.playerPercentage$.next(percentage);
    }
 
    private setPlayerStatus = (state: any) =>{
@@ -92,7 +99,7 @@ export class MultimediaService {
 
    // manda la url del audio a la propiedad del objeto audio html
    public setAudio(track: TrackModel): void {
-    console.log('recibiendo track', track);
+    //console.log('recibiendo track', track);
     this.audio.src = track.url;
     this.audio.play();
     this.listenAllEvents();
