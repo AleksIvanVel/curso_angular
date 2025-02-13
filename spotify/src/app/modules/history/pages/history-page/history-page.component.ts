@@ -15,8 +15,6 @@ export class HistoryPageComponent {
   constructor(private serachService: SearchService){}
   //funcion para recibir y procesar los datos del componente hijo (search)
   reciveData(event:string): void{
-    console.log('estoy en el padre', event);
-
     // aplicaicon de filtro async para evitar encolar peticiones
     this.listResults$ = this.serachService.searchTrakcs$(event)
     
