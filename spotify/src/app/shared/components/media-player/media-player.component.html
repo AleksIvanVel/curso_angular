@@ -1,4 +1,4 @@
-
+ 
 <div class="media-player">
     <div class="media-player--wrapper ">
         <!--Zona del artista-->
@@ -53,7 +53,7 @@
         </div>
         <div class="media-linetime">
             <div class="time">{{multimediaService.timeElapsed$ | async}}</div>
-            <span class="time-progress">
+            <span class="time-progress" #progressBar (click)="handlePosition($event)">
                 <span class="time-progress-live" [style.width]="(multimediaService.playerPercentage$ | async)+'%' ">
                 </span>
             </span>

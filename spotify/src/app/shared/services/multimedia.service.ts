@@ -105,7 +105,22 @@ export class MultimediaService {
     this.listenAllEvents();
    }
 
+   //cambiar estado de pausa o reproduccion 
    public togglePayer(): void{
     (this.audio.paused) ? this.audio.play() : this.audio.pause()
+   }
+
+   // establece el porcentaje de audio en el progressBar
+   public seekAudio(percenage: number):void{
+    const {duration} = this.audio;
+    //100% es la duracion de la cancion {duration}
+    
+    //regla de tres
+    //100% --> duration (200 s)
+    //70% (percentage) -->(x s)
+    const percentageToSecond = (percenage * duration) / 100
+
+    //asignar porcentaje del progressBar al audio
+    this.audio.currentTime = percentageToSecond;
    }
 }
